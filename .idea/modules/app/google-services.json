@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "136682043492",
+    "firebase_url": "https://teach-79bd0.firebaseio.com",
+    "project_id": "teach-79bd0",
+    "storage_bucket": "teach-79bd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136682043492:android:7569db7c7debbf767f4771",
+        "android_client_info": {
+          "package_name": "com.harshita.teach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136682043492-r51bpiet72fm6kupa1pt2l2rk5r67t9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harshita.teach",
+            "certificate_hash": "8fd8751cc8b376250b500c74b61199555e9a7971"
+          }
+        },
+        {
+          "client_id": "136682043492-21s26rub8e0tp3obfhg5akf50rhu0d96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp_6OF-9xDgSqT9beWc5oyTekG1QT1l8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136682043492-21s26rub8e0tp3obfhg5akf50rhu0d96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
