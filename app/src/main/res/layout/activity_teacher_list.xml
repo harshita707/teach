@@ -11,8 +11,6 @@
         tools:context=".TeacherListActivity">
 
 
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
@@ -50,6 +48,7 @@
                 android:layout_margin="16dp"
                 android:text="find" />
         </LinearLayout>
+        
 
         <TextView
             android:id="@+id/no_result_text"
@@ -60,7 +59,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="20sp"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
 
     </FrameLayout>

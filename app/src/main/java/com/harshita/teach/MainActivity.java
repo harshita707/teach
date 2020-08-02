@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -53,16 +55,16 @@ public class MainActivity extends AppCompatActivity {
         subject = findViewById(R.id.subject);
         btnFind = findViewById(R.id.submit_btn);
 
-        listOfTeacher.add(new Teacher("Name1", "BBA in MIS", new String[]{"ACCT 2331", "STAT 3331", "BIOL 2339"}, "10$ - 15$", R.drawable.image, 25.4587458, 70.5428795));
-        listOfTeacher.add(new Teacher("Name2", "BS in Health Education", new String[]{"BIOL 2331", "CHEM 3331", "HLTA 2339"}, "10$ - 15$", R.drawable.image, 55.4587458, 96.5428795));
-        listOfTeacher.add(new Teacher("Name3", "BS in Health Education", new String[]{"ACCT 2331", "BIOL 2331", "CHEM 3331"}, "10$ - 15$", R.drawable.image, 125.4587458, 10.5428795));
+        listOfTeacher.add(new Teacher("Name1", "BBA in MIS", new String[]{"ACCT 2331", "STAT 3331", "BIOL 2339"}, "₹800 - ₹1000", R.drawable.image, 25.4587458, 70.5428795));
+        listOfTeacher.add(new Teacher("Name2", "BS in Health Education", new String[]{"BIOL 2331", "CHEM 3331", "HLTA 2339"}, "₹800 - ₹1000", R.drawable.image, 55.4587458, 96.5428795));
+        listOfTeacher.add(new Teacher("Name3", "BS in Health Education", new String[]{"ACCT 2331", "BIOL 2331", "CHEM 3331"}, "₹800 - ₹1000", R.drawable.image, 125.4587458, 10.5428795));
         listOfTeacher.add(new Teacher("Name4", "BBA in MIS", new String[]{"BIOL 2331", "STAT 3331", "BIOL 2339"}, "10$ - 15$", R.drawable.image, 96.4587458, 12.5428795));
-        listOfTeacher.add(new Teacher("Name5", "BS in Health Education", new String[]{"ACCT 2331", "CHEM 3331", "BIOL 2331"}, "10$ - 15$", R.drawable.image, 58.4587458, 46.5428795));
-        listOfTeacher.add(new Teacher("Name6", "BBA in MIS", new String[]{"BIOL 2331", "HLTA 2339", "CHEM 3331"}, "10$ - 15$", R.drawable.image, 22.4587458, 22.5428795));
-        listOfTeacher.add(new Teacher("Name7", "BS in Health Education", new String[]{"HLTA 2339", "STAT 3331", "BIOL 2339"}, "10$ - 15$", R.drawable.image, 30.4587458, 50.5428795));
-        listOfTeacher.add(new Teacher("Name8", "BS in Health Education", new String[]{"CHEM 3331", "STAT 3331", "BIOL 2331"}, "10$ - 15$", R.drawable.image, 52.4587458, 75.5428795));
-        listOfTeacher.add(new Teacher("Name9", "BS in Health Education", new String[]{"CHEM 3331", "STAT 3331", "HLTA 2339"}, "10$ - 15$", R.drawable.image, 33.4587458, 66.5428795));
-        listOfTeacher.add(new Teacher("Name10", "BBA in MIS", new String[]{"HLTA 2339", "BIOL 2331", "CHEM 3331"}, "10$ - 15$", R.drawable.image, 21.4587458, 90.5428795));
+        listOfTeacher.add(new Teacher("Name5", "BS in Health Education", new String[]{"ACCT 2331", "CHEM 3331", "BIOL 2331"}, "₹800 - ₹1000", R.drawable.image, 58.4587458, 46.5428795));
+        listOfTeacher.add(new Teacher("Name6", "BBA in MIS", new String[]{"BIOL 2331", "HLTA 2339", "CHEM 3331"}, "₹800 - ₹1000", R.drawable.image, 22.4587458, 22.5428795));
+        listOfTeacher.add(new Teacher("Name7", "BS in Health Education", new String[]{"HLTA 2339", "STAT 3331", "BIOL 2339"}, "₹800 - ₹1000", R.drawable.image, 30.4587458, 50.5428795));
+        listOfTeacher.add(new Teacher("Name8", "BS in Health Education", new String[]{"CHEM 3331", "STAT 3331", "BIOL 2331"}, "₹800 - ₹1000", R.drawable.image, 52.4587458, 75.5428795));
+        listOfTeacher.add(new Teacher("Name9", "BS in Health Education", new String[]{"CHEM 3331", "STAT 3331", "HLTA 2339"}, "₹800 - ₹1000", R.drawable.image, 33.4587458, 66.5428795));
+        listOfTeacher.add(new Teacher("Name10", "BBA in MIS", new String[]{"HLTA 2339", "BIOL 2331", "CHEM 3331"}, "₹800 - ₹1000", R.drawable.image, 21.4587458, 90.5428795));
 
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,12 +112,35 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(MainActivity.this, TeacherListActivity.class);
-                intent.putExtra("TeachersListExtra", (ArrayList<Teacher>)listOfResultTeachers);
+                intent.putExtra("TeachersListExtra", (ArrayList<Teacher>) listOfResultTeachers);
                 intent.putExtra("Latitude", latitude);
                 intent.putExtra("Longitude", longitude);
                 intent.putExtra("Address", address);
 
                 startActivity(intent);
+            }
+        });
+
+        final RelativeLayout comingSoonLayout = findViewById(R.id.coming_soon_layout);
+        final LinearLayout detailsLayout = findViewById(R.id.details_layout);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_view);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_teacher:
+                        detailsLayout.setVisibility(View.VISIBLE);
+                        comingSoonLayout.setVisibility(View.GONE);
+                        break;
+                    case R.id.action_video_lecture:
+                    case R.id.action_buy_books:
+                        detailsLayout.setVisibility(View.GONE);
+                        comingSoonLayout.setVisibility(View.VISIBLE);
+                        break;
+                }
+
+                return true;
             }
         });
 

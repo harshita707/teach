@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_teacher"
+        android:icon="@drawable/ic_baseline_emoji_people"
+        android:title="Find Teacher"
+        />
+
+    <item
+        android:id="@+id/action_video_lecture"
+        android:icon="@drawable/ic_baseline_ondemand_video_24"
+        android:title="Video Lecture" />
+
+    <item
+        android:id="@+id/action_buy_books"
+        android:icon="@drawable/ic_outline_book_24"
+        android:title="Buy Books" />
+</menu>
